@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Love Story</title>
+  <style>
+    :root {
+      --bg-1: #070910;
+      --bg-2: #120d1c;
+      --card: rgba(19, 22, 37, 0.72);
+      --gold: #ffd166;
+      --pink: #ff7eb6;
+      --rose: #ff9ec7;
+      --lavender: #c7b3ff;
+      --mint: #8ef0d3;
+      --white: #f5f1ff;
+      --soft: #ddd2ff;
+      --shadow: rgba(0, 0, 0, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: radial-gradient(circle at top, rgba(255, 126, 182, 0.12), transparent 28%),
+                  radial-gradient(circle at bottom right, rgba(124, 92, 255, 0.12), transparent 30%),
+                  linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 36px 18px;
+      position: relative;
+    }
+
+    .background-text {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    .background-text span {
+      position: absolute;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.08);
+      animation: fadeFloat 12s ease-in-out infinite alternate;
+      white-space: nowrap;
+    }
+
+    .background-text span:nth-child(1) {
+      top: 12%;
+      left: 8%;
+      font-size: clamp(1.5rem, 3vw, 3.5rem);
+      animation-delay: 0s;
+    }
+
+    .background-text span:nth-child(2) {
+      top: 38%;
+      right: 9%;
+      font-size: clamp(1.3rem, 2.5vw, 3rem);
+      animation-delay: 1.2s;
+    }
+
+    .background-text span:nth-child(3) {
+      bottom: 18%;
+      left: 16%;
+      font-size: clamp(1.4rem, 2.8vw, 3.2rem);
+      animation-delay: 2.4s;
+    }
+
+    .background-text span:nth-child(4) {
+      bottom: 10%;
+      right: 14%;
+      font-size: clamp(1.2rem, 2.3vw, 2.7rem);
+      animation-delay: 3s;
+    }
+
+    @keyframes fadeFloat {
+      0% {
+        transform: translateY(0px) scale(0.98);
+        opacity: 0.08;
+      }
+      100% {
+        transform: translateY(-18px) scale(1.04);
+        opacity: 0.22;
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: min(900px, 92vw);
+      background: rgba(17, 20, 34, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 30px;
+      box-shadow: 0 30px 70px var(--shadow);
+      backdrop-filter: blur(12px);
+      padding: 42px 24px 30px;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255, 209, 102, 0.04), rgba(255, 126, 182, 0.03));
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .title {
+      margin: 0;
+      font-size: clamp(2.5rem, 5vw, 4.6rem);
+      line-height: 1.1;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-shadow: 0 0 20px rgba(255, 209, 102, 0.25);
+    }
+
+    .subtitle {
+      margin-top: 12px;
+      color: var(--pink);
+      font-size: 1.05rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .date {
+      margin-top: 18px;
+      font-size: 1.1rem;
+      color: var(--lavender);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .story {
+      max-width: 700px;
+      margin: 26px auto 0;
+      color: var(--soft);
+      font-size: 1.08rem;
+      line-height: 1.9;
+    }
+
+    .heart {
+      display: inline-block;
+      color: var(--pink);
+      font-size: 1.5rem;
+      animation: pulse 1.2s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.2); }
+    }
+
+    .reveal-btn {
+      margin-top: 26px;
+      border: none;
+      border-radius: 999px;
+      padding: 16px 30px;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      color: #1b1028;
+      background: linear-gradient(135deg, var(--pink), var(--gold));
+      box-shadow: 0 12px 26px rgba(255, 126, 182, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .reveal-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 16px 32px rgba(255, 126, 182, 0.42);
+    }
+
+    .timer-card {
+      display: none;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      margin-top: 26px;
+      padding: 28px 18px 20px;
+      background: rgba(12, 13, 22, 0.7);
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .timer-card.visible {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timer-label {
+      font-size: 0.78rem;
+      color: var(--rose);
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .timer-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(80px, 1fr));
+      gap: 12px;
+    }
+
+    .time-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 18px 10px 14px;
+    }
+
+    .value {
+      font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+      font-weight: 900;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+
+    .unit {
+      margin-top: 8px;
+      display: block;
+      color: var(--soft);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .message {
+      margin-top: 18px;
+      color: var(--mint);
+      font-weight: 700;
+      font-size: 1.04rem;
+    }
+
+    @media (max-width: 640px) {
+      .timer-grid {
+        grid-template-columns: repeat(3, minmax(90px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-text" aria-hidden="true">
+    <span>Terry ♥ Griffin</span>
+    <span>Forever</span>
+    <span>My love</span>
+    <span>Always</span>
+  </div>
+
+  <div class="container">
+    <div class="content">
+      <h1 class="title">Our Love Story</h1>
+      <div class="subtitle">Terry & Griffin</div>
+      <div class="date">Since 27 October 2026, 00:00</div>
+
+      <p class="story">
+        Every second with you feels like a blessing.
+        <span class="heart">❤</span>
+        From the first spark to every beautiful memory after, my heart has kept choosing you.
+        Here is the time our love has been growing, glowing, and glowing even brighter.
+      </p>
+
+      <button class="reveal-btn" id="revealBtn">Tap to see our time together</button>
+
+      <div class="timer-card" id="timerCard">
+        <div class="timer-label">Love time</div>
+
+        <div class="timer-grid">
+          <div class="time-box">
+            <span class="value" id="years">0</span>
+            <span class="unit">Years</span>
+          </div>
+          <div class="time-box">
+            <span class="value" id="months">0</span>
+            <span class="unit">Months</span>
+          </div>
+          <div class="time-box">
+            <span class="value" id="days">0</span>
+            <span class="unit">Days</span>
+          </div>
+          <div class="time-box">
+            <span class="value" id="hours">0</span>
+            <span class="unit">Hours</span>
+          </div>
+          <div class="time-box">
+            <span class="value" id="minutes">0</span>
+            <span class="unit">Minutes</span>
+          </div>
+          <div class="time-box">
+            <span class="value" id="seconds">0</span>
+            <span class="unit">Seconds</span>
+          </div>
+        </div>
+
+        <div class="message">Every second is another reminder: I love you endlessly.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const startDate = new Date("2026-10-27T00:00:00");
+    const revealBtn = document.getElementById("revealBtn");
+    const timerCard = document.getElementById("timerCard");
+
+    const fields = {
+      years: document.getElementById("years"),
+      months: document.getElementById("months"),
+      days: document.getElementById("days"),
+      hours: document.getElementById("hours"),
+      minutes: document.getElementById("minutes"),
+      seconds: document.getElementById("seconds")
+    };
+
+    function getLoveTime() {
+      const now = new Date();
+      let diff = now.getTime() - startDate.getTime();
+
+      if (diff < 0) diff = 0;
+
+      const totalSeconds = Math.floor(diff / 1000);
+
+      const years = Math.floor(totalSeconds / (365.25 * 24 * 60 * 60));
+      const months = Math.floor((totalSeconds / (30.44 * 24 * 60 * 60)) % 12);
+      const days = Math.floor((totalSeconds / (24 * 60 * 60)) % 30.44);
+      const hours = Math.floor((totalSeconds / (60 * 60)) % 24);
+      const minutes = Math.floor((totalSeconds / 60) % 60);
+      const seconds = totalSeconds % 60;
+
+      return { years, months, days, hours, minutes, seconds };
+    }
+
+    function updateTimer() {
+      const time = getLoveTime();
+
+      fields.years.textContent = time.years;
+      fields.months.textContent = time.months;
+      fields.days.textContent = time.days;
+      fields.hours.textContent = String(time.hours).padStart(2, "0");
+      fields.minutes.textContent = String(time.minutes).padStart(2, "0");
+      fields.seconds.textContent = String(time.seconds).padStart(2, "0");
+    }
+
+    revealBtn.addEventListener("click", () => {
+      timerCard.classList.add("visible");
+      updateTimer();
+    });
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>
